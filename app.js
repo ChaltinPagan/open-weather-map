@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const axios = require('axios');
+const key = require('./env.js');
 const port = 8000;
 
 app.use(logger('dev'));
@@ -16,7 +17,7 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/weather', function (req, res, next) {
-    axios.get('https://api.openweathermap.org/data/2.5/forecast?id=5128638&units=imperial&APPID=a945190d5fdbc488a8c5fcd360fc22be')
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?id=5128638&units=imperial&APPID=${key.api_key}`)
         .then( response => {
             res.status(200)
                 .send({
