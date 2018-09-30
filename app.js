@@ -17,12 +17,18 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/weather', function (req, res, next) {
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?id=5128638&units=imperial&APPID=${key.api_key}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=new york&units=imperial&APPID=${key.api_key}`)
         .then( response => {
+            let five_day = response.data.list.filter( el => {
+                if (el.dt_txt.includes("12:00:00")) {
+                    return el;
+                }
+            })
             res.status(200)
                 .send({
                     status: 'success',
-                    data: response.data
+                    city: response.data.city,
+                    forecast: five_day
                 });
         })
         .catch( err => {
