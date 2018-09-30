@@ -69,4 +69,4 @@ Get a 5-day forecast by city.
     * Implement a graph to show temperature change over the day.
 5. Search by city ID for a more accurate response from OpenWeatherMap API.
 6. Mulitlingual support for weather descriptions.
-    * The API offers translation of the weather secription.
+    * The API offers translation of the weather description.
