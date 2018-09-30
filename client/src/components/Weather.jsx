@@ -27,9 +27,10 @@ class Weather extends Component {
                         this.setState({
                             location: res.data.city,
                             forecast: res.data.forecast,
+                            not_found: false,
                             loading: false
                         })
-                    }, 2000)
+                    }, 3000)
                 })
                 .catch( err => {
                     console.log("Error: city not found.");
