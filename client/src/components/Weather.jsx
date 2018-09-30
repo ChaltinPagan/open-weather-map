@@ -43,22 +43,9 @@ class Weather extends Component {
     }
 
     handleTempUnit = (e) => {
-        const { temp_unit } = this.state;
-        let c = document.getElementById('metric');
-        let f = document.getElementById('imperial');
-
-        if (temp_unit === "fahrenheit") {
-            f.classList.remove('active-temp');
-            c.classList.add('active-temp');
-        } else {
-            c.classList.remove('active-temp');
-            f.classList.add('active-temp');
-        }
-
         this.setState({ [e.target.name]: e.target.id }, () => {
             this.getWeather();
         })
-
     }
 
     handleCityInput = (e) => {
@@ -74,7 +61,6 @@ class Weather extends Component {
 
     render(){
         const { location, forecast, not_found, temp_unit, city_input, loading } = this.state;
-        console.log("unit: ", temp_unit)
 
         if (loading) {
             return (
@@ -105,7 +91,8 @@ class Weather extends Component {
                 getWeather={this.getWeather}
                 not_found={not_found} />
 
-                <TempUnit handleTempUnit={this.handleTempUnit}/>
+                <TempUnit handleTempUnit={this.handleTempUnit}
+                temp_unit={temp_unit} />
 
                 <Forecast forecast={forecast} 
                 temp_unit={temp_unit} />
