@@ -24,15 +24,23 @@ app.get('/weather/:city/:units', function (req, res, next) {
                     return el;
                 }
             })
+
             res.status(200)
                 .send({
                     status: 'success',
                     city: response.data.city,
                     forecast: five_day
                 });
+            
         })
         .catch( err => {
             console.log(err);
+            res.status(404)
+                .send({
+                    status: 'not found',
+                    message: "City not found."
+                })
+        
         })
 })
 
