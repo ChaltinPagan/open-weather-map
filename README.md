@@ -2,6 +2,8 @@
 
 Get a 5-day forecast by city.
 
+<img src="./screenshots/weather-1.png" alt="Weather screenshot">
+
 ## Features
 
 * Search by city
