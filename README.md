@@ -23,9 +23,12 @@ Get a 5-day forecast by city.
 ## Installation
 
 1. Clone the master branch of this repository.
-2. Open a terminal for the server.
+2. In the root folder, create an `env.js` file.
+    * Declare `const API_ID = <<YOUR API KEY>>`.
+    * Export the api key with `module.exports.api_key = API_ID`
+3. Open a terminal for the server.
     * `npm start`
-3. Open a second terminal for the client side.
+4. Open a second terminal for the client side.
     * `cd client`
     * `npm start`
 
