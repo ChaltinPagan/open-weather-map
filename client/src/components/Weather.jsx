@@ -10,6 +10,7 @@ class Weather extends Component {
         this.state = {
             location: null,
             forecast: null,
+            not_found: false,
             temp_unit: "imperial", 
             city_input: "New York", 
             loading: false
@@ -29,6 +30,13 @@ class Weather extends Component {
                             loading: false
                         })
                     }, 2000)
+                })
+                .catch( err => {
+                    console.log("Error: city not found.");
+                    this.setState({
+                        not_found: true,
+                        loading: false
+                    })
                 })
         })
     }
@@ -64,7 +72,7 @@ class Weather extends Component {
     }
 
     render(){
-        const { location, forecast, temp_unit, city_input, loading } = this.state;
+        const { location, forecast, not_found, temp_unit, city_input, loading } = this.state;
         console.log("unit: ", temp_unit)
 
         if (loading) {
@@ -93,7 +101,8 @@ class Weather extends Component {
 
                 <Form city_input={city_input}
                 handleCityInput={this.handleCityInput}
-                getWeather={this.getWeather}/>
+                getWeather={this.getWeather}
+                not_found={not_found} />
 
                 <TempUnit handleTempUnit={this.handleTempUnit}/>
 
