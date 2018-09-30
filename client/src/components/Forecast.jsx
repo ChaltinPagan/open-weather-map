@@ -10,7 +10,7 @@ const Forecast = ({ forecast, temp_unit }) => {
                     <img src={`http://openweathermap.org/img/w/${el.weather[0].icon}.png`} alt={el.weather[0].main} id="condition-icon"/>
                     <p id="condition-text" className="card-title">{el.weather[0].description}</p>
                     <hr />
-                    <p id="high-temp">Temp:{" "}{el.main.temp}</p>
+                    <p id="high-temp">Temp:{" "}{el.main.temp}{temp_unit === "imperial" ? " F" : " C"}</p>
                     <p id="humidity">Humidity:{" "}{el.main.humidity}%</p>
                 </div>
             </section>

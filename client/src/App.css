@@ -1,28 +1,155 @@
-.App {
-  text-align: center;
+body {
+  background-color: #eef6fa;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+header {
+  background-color: #55accf;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+/* City input form */
+#city {
+  min-height: 125px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.App-title {
+#city-input {
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+#city-submit {
+  border: 1px solid #1c647e;
+  color: #1c647e;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#city-submit:hover {
+  background-color: #1c647e;
+  color: #fff;
+}
+
+#no-city {
+  margin-top: 1em;
+  margin-bottom: 0;
+  height: 3em;
+}
+/* end of City input form styling */
+
+/* temp choice buttons */
+#temp-choice {
+  text-align: right;
+  padding-right: 5em;
+}
+
+#temp-choice .btn {
+  border-color: #000;
+}
+
+.active-temp {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+/* end of temp choice button styling */
+
+/* 5-day forecast */
+#forecast {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 2em 5em;
+}
+
+.daily-forecast {
+  box-sizing: border-box;
+  width: 225px;
+  height: 350px;
+  margin-bottom: 2em;
+  border: 1px solid #1c647e;
+}
+
+.daily-forecast hr {
+  margin-top: 2em;
+}
+
+#day, #condition-text {
+  text-align: center;
+}
+
+#condition-text {
+  height: 2em;
+  margin-top: 1em;
+}
+
+#condition-icon {
+  display: block;
+  margin: auto;
+}
+/* end of 5-day forecast styling */
+
+/* Loading icon */
+#loading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-spinner {
+  color: #1c647e;
+}
+/* end of loading icon styling */
+
+/* Technical Difficulties styling */
+#technical-difficulties {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-exclamation {
+  color: #1c647e;
+  margin-bottom: 0.25em;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    height: 125px;
+  }
+  header h1 {
+    text-align: center;
+  }
+  #temp-choice {
+    padding-right: 2em;
+    margin-top: 1em;
+  }
+  #forecast {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .daily-forecast {
+    width: 300px;
+  }
+  .btn {
+    background-color: #fff;
+  }
+  #temp-choice .btn {
+    border-color: #000;
+  }
+  .active-temp {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+  }
 }

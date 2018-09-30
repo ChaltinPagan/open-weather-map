@@ -1,4 +1,5 @@
 import React from 'react';
+import Alert from './Alert';
 
 const Form = ({ city_input, handleCityInput, getWeather, not_found }) => {
     return (
@@ -7,7 +8,7 @@ const Form = ({ city_input, handleCityInput, getWeather, not_found }) => {
 
             <button type="button" className="btn" id="city-submit" onClick={getWeather}>Submit</button>
 
-            <p id="no-city">{not_found ? "City not found." : ""}</p>
+            <Alert not_found={not_found} />
         </section>
     )
 }
