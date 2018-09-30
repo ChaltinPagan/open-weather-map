@@ -16,11 +16,11 @@ app.get('/', function (req, res, next) {
     res.send("Open Weather Map Routes");
 });
 
-app.get('/weather', function (req, res, next) {
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=new york&units=imperial&APPID=${key.api_key}`)
+app.get('/weather/:city/:units', function (req, res, next) {
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${req.params.city}&units=${req.params.units}&APPID=${key.api_key}`)
         .then( response => {
             let five_day = response.data.list.filter( el => {
-                if (el.dt_txt.includes("12:00:00")) {
+                if (el.dt_txt.includes("09:00:00")) {
                     return el;
                 }
             })
