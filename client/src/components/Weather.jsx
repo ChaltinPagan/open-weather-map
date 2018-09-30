@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Forecast from './Forecast';
+import Form from './Form';
+import TempUnit from './TempUnit';
 
 class Weather extends Component {
     constructor(){
@@ -33,8 +35,8 @@ class Weather extends Component {
 
     handleTempUnit = (e) => {
         const { temp_unit } = this.state;
-        let c = document.getElementById('celsius');
-        let f = document.getElementById('fahrenheit');
+        let c = document.getElementById('metric');
+        let f = document.getElementById('imperial');
 
         if (temp_unit === "fahrenheit") {
             f.classList.remove('active-temp');
@@ -44,9 +46,10 @@ class Weather extends Component {
             f.classList.add('active-temp');
         }
 
-        this.setState({
-            [e.target.name]: e.target.id
+        this.setState({ [e.target.name]: e.target.id }, () => {
+            this.getWeather();
         })
+
     }
 
     handleCityInput = (e) => {
@@ -62,6 +65,7 @@ class Weather extends Component {
 
     render(){
         const { location, forecast, temp_unit, city_input, loading } = this.state;
+        console.log("unit: ", temp_unit)
 
         if (loading) {
             return (
@@ -86,6 +90,12 @@ class Weather extends Component {
                 <header>
                     <h1>5-Day Forecast for {location.name}</h1>
                 </header>
+
+                <Form city_input={city_input}
+                handleCityInput={this.handleCityInput}
+                getWeather={this.getWeather}/>
+
+                <TempUnit handleTempUnit={this.handleTempUnit}/>
 
                 <Forecast forecast={forecast} 
                 temp_unit={temp_unit} />
